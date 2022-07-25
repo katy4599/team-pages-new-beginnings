@@ -119,7 +119,7 @@ export default {
 
 .pic {
 	width: 100%;
-	min-width: 185px;
+	min-width: 190px;
 	margin-right: auto;
 	border-radius: 10px;
 	box-shadow: -20px 20px 10px #c3e2ff;

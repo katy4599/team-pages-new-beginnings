@@ -38,16 +38,26 @@ export default {
 	},
 
 	created: async function () {
-		try {
-			this.loading = true;
-			let response = await UserService.getAllMembers();
-			this.loading = false;
-			this.members = response.data;
-		} catch (error) {
-			this.loading = false;
-			this.errorMessage = error;
-		}
-	},
+        try {
+            this.loading = true;
+            let response = await UserService.getAllMembers();
+            this.loading = false;
+            this.members = response.data.sort((a,b) => {
+                let fa = a.firstName;
+                let fb = b.firstName;
+                if (fa<fb) {
+                    return -1;
+                } else if (fa>fb) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            });
+        } catch (error) {
+            this.loading = false;
+            this.errorMessage = error;
+        }
+    },
 
 	/*computed: {
 		sortedArray() {

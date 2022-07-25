@@ -72,6 +72,7 @@ export default {
 	font-family: Avenir, Helvetica, Arial, sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	font-size: 1.4rem;
 	text-align: center;
 	color: gray;
 }
@@ -111,7 +112,7 @@ export default {
 	margin-left: 10px;
 	font-style: normal;
 	font-weight: 600;
-	font-size: 24px;
+	font-size: 1.0rem;
 	/* line-height: 70px; */
 	color: #747474;
 }
