@@ -58,22 +58,6 @@ export default {
             this.errorMessage = error;
         }
     },
-
-	/*computed: {
-		sortedArray() {
-			let sortedMembers = this.members;
-			sortedMembers = sortedMembers.sort((a,b) => {
-				let fa = a.firstName.toLowerCase(), fb = b.firstName.toLowerCase();
-				if (fa < fb) {
-					return -1
-				}
-				if (fa > fb) {
-					return 1
-				}
-				return 0
-				})
-		}
-	}*/
 };
 </script>
 
@@ -83,7 +67,7 @@ export default {
 .page-box {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-between;
+	justify-content: space-evenly;
 	gap: 20px;
 	padding-left: 10%;
 	padding-right: 10%;
