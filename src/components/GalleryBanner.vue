@@ -1,6 +1,11 @@
 <template>
 	<div class="some-page-wrapper">
-			<div class="row">
+		<div class="some-page-wrapper">
+			<div class="logo-row">
+				<img class="logo" src="../assets/SnapIT.webp" />
+			</div>
+		</div>
+		<div class="row">
 			<div class="column">
 				<div class="blue-column">
 					<p>Meet Our Team</p>
@@ -17,11 +22,11 @@ export default {
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
 .some-page-wrapper {
 	box-sizing: border-box;
-	font-family: 'Poppins', sans-serif;
+	font-family: "Poppins", sans-serif;
 }
 
 .logo-row {
@@ -56,7 +61,7 @@ export default {
 
 .blue-column {
 	display: flex;
-	background-image: url('../assets/Team.png');
+	background-image: url("../assets/Team.png");
 	height: 200px;
 	align-items: center;
 	padding-left: 10%;
@@ -65,8 +70,6 @@ export default {
 p {
 	color: white;
 	font-size: 48px;
-	padding: 0%
-;
+	padding: 0%;
 }
-
 </style>

@@ -1,12 +1,10 @@
 <template>
-  <div class="logo-row">
-				<img class="logo" src="@/assets/SnapIT.webp">
-			<a>
-				<router-link class="linkText" to="/">team gallery</router-link>
-			</a>
-		</div>
   <router-view/>
 </template>
+
+<script>
+
+</script>
 
 <style>
 .linkText {

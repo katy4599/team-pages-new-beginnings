@@ -1,28 +1,23 @@
 <template>
 	<div class="page-box">
 		<span class="gallery-intro">
-			Morbi faucibus dolor nec efficitur consectetur. In hac habitasse platea
-			dictumst. Pellentesque feugiat risus non ipsum facilisis, ut bibendum enim
-			vulputate. Proin nec rhoncus eros, vitae vehicula elit. Vestibulum at
-			ipsum ac justo feugiat pharetra sed id quam. Nulla eu tellus sollicitudin,
-			tincidunt ex et, egestas lectus. Pellentesque bibendum erat ac dapibus
-			venenatis. Aenean vel est id tortor posuere congue. Aliquam convallis et
-			metus quis pharetra. Sed tortor nisi, laoreet vitae dolor quis, ultricies
-			vehicula massa.
+			Every player must be committed to the game plan without deviation
+			and work together to make it a win. Commit to the greater goal.
+			Always have the team's best interest in mind.
 		</span>
-		<div class="card" v-for="user of users" :key="user.id">
-			<router-link :to="'/details/' + user.id" 
+		<div class="card" v-for="member of members" :key="member.id">
+			<router-link :to="'/details/' + member.id" 
 				><div class='blue-box'><img
 					class="shane"
 					src="@/assets/sudheer.webp"
 					alt="avatar"
 					style="width: 100%"
 			/></div></router-link>
-			<div>
-				<h4 class="name">
-					<b>{{ user.name }}</b>
+			<div class="nameAndTitle">
+				<h4 class="memName">
+					<b>{{ member.firstName }}</b>
 				</h4>
-				<p class="title">{{ user.address.city }}</p>
+				<h4 class="memTitle">{{ member.title }}</h4>
 			</div>
 		</div>
 	</div>
@@ -37,7 +32,7 @@ export default {
 	data() {
 		return {
 			loading: false,
-			users: [],
+			members: [],
 			errorMessage: null,
 		};
 	},
@@ -45,14 +40,30 @@ export default {
 	created: async function () {
 		try {
 			this.loading = true;
-			let response = await UserService.getAllUsers();
+			let response = await UserService.getAllMembers();
 			this.loading = false;
-			this.users = response.data;
+			this.members = response.data;
 		} catch (error) {
 			this.loading = false;
 			this.errorMessage = error;
 		}
 	},
+
+	/*computed: {
+		sortedArray() {
+			let sortedMembers = this.members;
+			sortedMembers = sortedMembers.sort((a,b) => {
+				let fa = a.firstName.toLowerCase(), fb = b.firstName.toLowerCase();
+				if (fa < fb) {
+					return -1
+				}
+				if (fa > fb) {
+					return 1
+				}
+				return 0
+				})
+		}
+	}*/
 };
 </script>
 
@@ -62,7 +73,7 @@ export default {
 .page-box {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-evenly;
+	justify-content: space-between;
 	gap: 20px;
 	padding-left: 10%;
 	padding-right: 10%;
@@ -74,41 +85,50 @@ export default {
 	width: 100%;
 	text-align: center;
 	padding-top: 10vh;
-	padding-bottom: 12vh;
-	font-size: 20px;
+	padding-bottom: 5vh;
+	font-size: 28px;
 }
 
 .card {
 	transition: 0.3s;
 	width: 300px;
-}
 
-.blue-box {
-	background-color:rgb(0, 0, 88);
-	height: 300px;
-	border-radius: 10px;
 }
 
 .shane {
-	border-radius: 10px;
-	opacity: 80%;
+	transition: 0.3s;
+	width: 100%;
+	opacity: 0.95;
 }
-.shane:hover {
-	opacity: 100%
+.shane:hover{
+	transform: scale(1.09);
+	opacity: 1;
 }
 
-.name {
-	font-size: 18px;
-	margin-top: 0;
-	margin-bottom: 0;
+.nameAndTitle {
 	text-align: center;
 }
 
-.title {
+.memName {
+	font-size: 18px;
+	margin-top: 5px;
+	margin-bottom: 0;
+}
+
+.memTitle {
 	font-size: 16px;
 	font-weight: 600;
 	color: gray;
-	margin-top: 10px;
-	text-align: center;
+	margin-top: 1px;
+	margin-bottom: 0;
 }
+
+.blue-box{
+	width: 300px;
+	height: 300px;
+	overflow: hidden;
+	border-radius: 10px;
+	background-color: blue;
+}
+
 </style>

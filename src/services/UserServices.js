@@ -2,13 +2,13 @@ import axios from "axios";
 
 export class UserService {
 
-    static getAllUsers() {
-        let dataURL = 'https://jsonplaceholder.typicode.com/users';
+    static getAllMembers() {
+        let dataURL = 'http://localhost:3001/members';
         return axios.get(dataURL);
     }
 
-    static getUser(userId) {
-        let dataURL = `https://jsonplaceholder.typicode.com/users/${userId}`;
+    static getMembers(memberId) {
+        let dataURL = `http://localhost:3001/members/${memberId}`;
         return axios.get(dataURL);
-      }
+    }
 }
