@@ -122,7 +122,7 @@ export default {
 }
 
 .picHolder {
-  width: 70%;
+  width: 80%;
   margin-right: auto;
   margin-left: 10%;
   margin-top: 20%;
@@ -132,8 +132,8 @@ export default {
   width: 100%;
   min-width: 190px;
   margin-right: auto;
-  border-radius: 55% 45% 64% 36% / 43% 75% 25% 57%;
-  box-shadow: -20px 20px 10px #c3e2ff;
+  border-radius: 30% 70% 78% 22% / 54% 44% 56% 46%;
+  box-shadow: -30px 30px 10px #c3e2ff;
 }
 
 .badge {
