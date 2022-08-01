@@ -3,7 +3,7 @@
     <div class="compRow">
       <div class="compColumn-left">
         <div class="picHolder">
-          <img class="pic" src="..\assets\sudheer.webp" />
+          <img class="pic" :src="getAvatar" />
         </div>
         <div v-if="member.wasApprentice" class="badge">
           <img class="badge-image" src="..\assets\AppBadge.png" />
@@ -92,6 +92,12 @@ export default {
       this.errorMessage = error;
     }
   },
+
+  computed: {
+    getAvatar() {
+      return require(`@/assets/avatars/${this.member.firstName}.png`);
+    }
+  }
 };
 </script>
 

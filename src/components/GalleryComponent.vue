@@ -6,13 +6,16 @@
 			Always have the team's best interest in mind.
 		</span>
 		<div class="card" v-for="member of members" :key="member.id">
-			<router-link :to="'/details/' + member.id" 
-				><div class='blue-box'><img
+			<router-link :to="'/details/' + member.id" >
+				<div class='blue-box'>
+				<img
+					v-if="member.firstName != undefined || null"
 					class="shane"
-					src="@/assets/sudheer.webp"
+					src="getAvatar"
 					alt="avatar"
-					style="width: 100%"
-			/></div></router-link>
+			
+					style="width: 100%" />
+			</div></router-link>
 			<div class="nameAndTitle">
 				<h4 class="memName">
 					<b>{{ member.firstName }}</b>
@@ -33,6 +36,7 @@ export default {
 		return {
 			loading: false,
 			members: [],
+			
 			errorMessage: null,
 		};
 	},
@@ -41,6 +45,7 @@ export default {
         try {
             this.loading = true;
             let response = await UserService.getAllMembers();
+			
             this.loading = false;
             this.members = response.data.sort((a,b) => {
                 let fa = a.firstName;
@@ -53,11 +58,18 @@ export default {
                     return 0;
                 }
             });
+			
         } catch (error) {
             this.loading = false;
             this.errorMessage = error;
         }
     },
+
+	computed: {
+		getAvatar() {
+			return require(`@/assets/avatars/${this.member.firstName}.png`);
+		}
+	}
 };
 </script>
 

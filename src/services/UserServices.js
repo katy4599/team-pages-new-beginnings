@@ -7,6 +7,7 @@ export class UserService {
         return axios.get(dataURL);
     }
 
+    
     static getMembers(memberId) {
         let dataURL = `http://localhost:3001/members/${memberId}`;
         return axios.get(dataURL);
