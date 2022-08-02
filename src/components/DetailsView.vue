@@ -1,7 +1,9 @@
 <template>
-	<DetailsBanner />
-	<DetailsComponent />
-	<FooterComponent />
+	<div>
+		<DetailsBanner />
+		<DetailsComponent />
+		<FooterComponent />
+	</div>
 </template>
 
 <script setup>

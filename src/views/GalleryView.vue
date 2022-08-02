@@ -1,7 +1,9 @@
 <template>
-	<GalleryBanner />
-	<GalleryComponent />
-	<FooterComponent />
+	<div>
+		<GalleryBanner />
+		<GalleryComponent />
+		<FooterComponent />
+	</div>
 </template>
 
 <script>

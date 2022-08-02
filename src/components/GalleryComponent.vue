@@ -7,11 +7,10 @@
 		</span>
 		<div class="card" v-for="member of members" :key="member.id">
 			<router-link :to="'/details/' + member.id" >
-				<div class='blue-box'>
+				<div class='blue-box' v-if="member?.firstName != undefined ">
 				<img
-					v-if="member.firstName != undefined || null"
 					class="shane"
-					src="getAvatar"
+					:src="member.avatarUrl"
 					alt="avatar"
 			
 					style="width: 100%" />
@@ -56,20 +55,18 @@ export default {
                     return 1;
                 } else {
                     return 0;
-                }
+                }			
             });
+			this.members = this.members.map((member) => {
+				member.avatarUrl = require(`@/assets/avatars/${member.firstName}.png`);
+				return member
+			})
 			
         } catch (error) {
             this.loading = false;
             this.errorMessage = error;
         }
     },
-
-	computed: {
-		getAvatar() {
-			return require(`@/assets/avatars/${this.member.firstName}.png`);
-		}
-	}
 };
 </script>
 
@@ -98,13 +95,13 @@ export default {
 .card {
 	transition: 0.3s;
 	width: 300px;
-
 }
 
 .shane {
 	transition: 0.3s;
-	width: 100%;
 	opacity: 0.95;
+	aspect-ratio: 1/1;
+	width: 100%;
 }
 .shane:hover{
 	transform: scale(1.09);

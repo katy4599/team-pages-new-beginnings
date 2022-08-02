@@ -3,7 +3,7 @@
     <div class="compRow">
       <div class="compColumn-left">
         <div class="picHolder">
-          <img class="pic" :src="getAvatar" />
+          <img class="pic" :src="member.avatarUrl" />
         </div>
         <div v-if="member.wasApprentice" class="badge">
           <img class="badge-image" src="..\assets\AppBadge.png" />
@@ -83,21 +83,15 @@ export default {
     try {
       this.loading = true;
       let response = await UserService.getMembers(memberId);
-      console.log(response.data);
       this.loading = false;
-      console.log(response.data);
       this.member = response.data;
+      this.member.avatarUrl = require(`@/assets/avatars/${this.member.firstName}.png`);
     } catch (error) {
       this.loading = false;
       this.errorMessage = error;
     }
   },
 
-  computed: {
-    getAvatar() {
-      return require(`@/assets/avatars/${this.member.firstName}.png`);
-    }
-  }
 };
 </script>
 
@@ -145,12 +139,6 @@ export default {
 .badge {
   margin-left: 60%;
   margin-top: -22%;
-
-  /* height: auto;
-	width: 20px; */
-  /* margin-top: -23%;
-	padding-left: 68%;
-	z-index: 1; */
 }
 
 .badge-image {
@@ -164,7 +152,6 @@ export default {
   margin-right: 10%;
   margin-left: auto;
   margin-top: 35%;
-
   justify-content: left;
 }
 
